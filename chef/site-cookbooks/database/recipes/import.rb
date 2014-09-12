@@ -21,10 +21,10 @@ mysql_connection_info = {
 }
 
 # my_database = database name
-#mysql_database 'my_database' do
-#  connection mysql_connection_info
-#  action :create
-#end
+mysql_database 'citizen_service' do
+  connection mysql_connection_info
+  action :create
+end
 
 # Grant all privileges on all databases/tables from localhost
 mysql_database_user 'root' do
@@ -35,10 +35,10 @@ mysql_database_user 'root' do
 end
 
 # import an sql dump from your app_root/data/dump.sql to the my_database database
-#execute "import" do
-#  command "mysql -u root -p\"#{node['mysql']['server_root_password']}\" my_database < /srv/site/data/dump.sql"
-#  action :run
-#end
+execute "import" do
+  command "mysql -u root -p\"#{node['mysql']['server_root_password']}\" citizen_service < /home/vagrant/cs/data/db/citizen_service.sql"
+  action :run
+end
 
 # this isn't really necessary, as we're using root and not creating a database
 # user, but I'm including it and commenting it out so you can see what it looks like

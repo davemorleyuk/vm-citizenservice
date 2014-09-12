@@ -1,23 +1,26 @@
 # Name of the role should match the name of the file
 name "vagrant-test-box"
 
-default_attributes(
-    "build_essential" => {
-        "compile_time" => true
-    }
-)
+#default_attributes(
+#    "build_essential" => {
+#        "compile_time" => true
+#    }
+#)
 
 override_attributes(
+
 		"apache" => {
 			"user" => "vagrant",
 			"group" => "vagrant"
 		},
+		
+		
     "mysql" => {
         "server_root_password" => 'root',
         "server_repl_password" => 'repl',
         "server_debian_password" => 'debian',
-#        "bind_address" => '0.0.0.0'
     },
+
     "zendserver" => {
 #    	"version" => '6.3',
 #    	"phpversion" => '5.3',
@@ -41,7 +44,7 @@ run_list(
   "recipe[yum]",	
 	"recipe[build-essential]",
 	"recipe[vim]",
-	"recipe[mysql]",
+#	"recipe[mysql]",
 	"recipe[mysql::server]",
   "recipe[database::mysql]",
   "recipe[database::import]",
