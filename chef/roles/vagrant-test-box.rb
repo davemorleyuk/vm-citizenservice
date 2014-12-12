@@ -13,8 +13,7 @@ override_attributes(
 			"user" => "vagrant",
 			"group" => "vagrant"
 		},
-		
-		
+
     "mysql" => {
         "server_root_password" => 'root',
         "server_repl_password" => 'repl',
@@ -49,5 +48,6 @@ run_list(
   "recipe[database::mysql]",
   "recipe[database::import]",
 	"recipe[zendserver::single]",
-	"recipe[custom::vhosts]"
+	"recipe[custom::vhosts]",
+	"recipe[custom::mailcatcher]"
 )
